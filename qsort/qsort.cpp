@@ -1,9 +1,10 @@
+#include <chrono>
 #include <cilk/cilk.h>
 #include <cilk/cilk_api.h>
-#include <vector>
-#include <iostream>
+#include <ctime>
 #include <fstream>
-#include <chrono>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -66,7 +67,7 @@ void qsort_par(vector<long long>& array, long long l, long long r) {
 }
 
 vector<long long> generate(long long size) {
-    srand(0);
+    srand(time(0));
     vector<long long> res(size);
     for (long long i = 0; i < size; ++i) {
         res[i] = rand();
@@ -136,7 +137,7 @@ int main(int argc, char *argv[]) {
     int numWorkers = __cilkrts_get_nworkers();
     cout << "Runs " << runs << endl;
     cout << "Array size " << array_size << endl;
-    cout << "Workers " << numWorkers << endl;
+    cout << "Workers " << numWorkers << endl << endl;
 
     for (long long i = 0; i < runs; ++i) {
         cout << "Test #" << i + 1 << endl;

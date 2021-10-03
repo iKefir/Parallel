@@ -1,30 +1,31 @@
 Runs 5
 Array size 100000000
 Workers 4
+
 Test #1
-qsort_seq time: 29652 ms
-qsort_par time: 8843 ms
+qsort_seq time: 27445 ms
+qsort_par time: 8380 ms
 Assert results of sort equal: Equal
 
 Test #2
-qsort_seq time: 27892 ms
-qsort_par time: 8348 ms
+qsort_seq time: 27014 ms
+qsort_par time: 8402 ms
 Assert results of sort equal: Equal
 
 Test #3
-qsort_seq time: 28474 ms
-qsort_par time: 9333 ms
+qsort_seq time: 26886 ms
+qsort_par time: 8637 ms
 Assert results of sort equal: Equal
 
 Test #4
-qsort_seq time: 29166 ms
-qsort_par time: 8453 ms
+qsort_seq time: 27083 ms
+qsort_par time: 8311 ms
 Assert results of sort equal: Equal
 
 Test #5
-qsort_seq time: 29080 ms
-qsort_par time: 8513 ms
+qsort_seq time: 26839 ms
+qsort_par time: 8559 ms
 Assert results of sort equal: Equal
 
-qsort_seq average time: 28853 ms
-qsort_par average time: 8698 ms
+qsort_seq average time: 27053 ms
+qsort_par average time: 8458 ms
