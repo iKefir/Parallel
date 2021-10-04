@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <chrono>
 #include <cilk/cilk.h>
 #include <cilk/cilk_api.h>
@@ -80,6 +81,10 @@ vector<chrono::duration<int64_t, nano>> runtimes_seq, runtimes_par;
 void compare_seq_and_par(long long array_size) {
     vector<long long> to_sort_seq = generate(array_size);
     vector<long long> to_sort_par = to_sort_seq;
+    vector<long long> to_sort_check;
+    if (array_size <= 1e7) {
+        to_sort_check = to_sort_seq;
+    }
 
     // cout << "Start sort seq" << endl;
     auto start_time_seq = std::chrono::high_resolution_clock::now();
@@ -97,27 +102,31 @@ void compare_seq_and_par(long long array_size) {
     runtimes_par.push_back(time_par);
     cout << "qsort_par time: " << time_par / std::chrono::milliseconds(1) << " ms" << endl;
 
-    cout << "Assert results of sort equal: ";
-    bool equal = true;
-    for (long long i = 0; i < to_sort_seq.size(); ++i) {
-        if (to_sort_seq[i] != to_sort_par[i]) {
-            equal = false;
-            break;
+    if (array_size <= 1e7) {
+        cout << "Assert results of sort correct: ";
+        sort(to_sort_check.begin(), to_sort_check.end());
+        bool correct_seq = true, correct_par = true;
+        for (long long i = 0; i < to_sort_check.size(); ++i) {
+            if (to_sort_check[i] != to_sort_seq[i]) {
+                correct_seq = false;
+                break;
+            }
+            if (to_sort_check[i] != to_sort_par[i]) {
+                correct_par = false;
+                break;
+            }
+        }
+        if (correct_seq) {
+            cout << "qsort_seq is correct ";
+        } else {
+            cout << "qsort_seq is not correct ";
+        }
+        if (correct_par) {
+            cout << "qsort_par is correct" << endl;
+        } else {
+            cout << "qsort_par is not correct" << endl;
         }
     }
-    cout << (equal ? "Equal" : "Not equal") << endl;
-    // if (!equal) {
-        // cout << to_sort_seq[0] << endl << to_sort_par[0] << endl;
-        // cout << to_sort_seq.size() << endl << to_sort_par.size() << endl;
-        // for (long long i = 0; i < to_sort_seq.size(); ++i) {
-        //     cout << to_sort_seq[i] << " ";
-        // }
-        // cout << endl;
-        // for (long long i = 0; i < to_sort_par.size(); ++i) {
-        //     cout << to_sort_par[i] << " ";
-        // }
-        // cout << endl;
-    // }
 }
 
 int main(int argc, char *argv[]) {

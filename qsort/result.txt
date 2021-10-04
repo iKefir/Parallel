@@ -3,29 +3,24 @@ Array size 100000000
 Workers 4
 
 Test #1
-qsort_seq time: 27445 ms
-qsort_par time: 8380 ms
-Assert results of sort equal: Equal
+qsort_seq time: 27602 ms
+qsort_par time: 8929 ms
 
 Test #2
-qsort_seq time: 27014 ms
-qsort_par time: 8402 ms
-Assert results of sort equal: Equal
+qsort_seq time: 26989 ms
+qsort_par time: 8497 ms
 
 Test #3
-qsort_seq time: 26886 ms
-qsort_par time: 8637 ms
-Assert results of sort equal: Equal
+qsort_seq time: 27201 ms
+qsort_par time: 8351 ms
 
 Test #4
-qsort_seq time: 27083 ms
-qsort_par time: 8311 ms
-Assert results of sort equal: Equal
+qsort_seq time: 27052 ms
+qsort_par time: 8506 ms
 
 Test #5
-qsort_seq time: 26839 ms
-qsort_par time: 8559 ms
-Assert results of sort equal: Equal
+qsort_seq time: 27071 ms
+qsort_par time: 8537 ms
 
-qsort_seq average time: 27053 ms
-qsort_par average time: 8458 ms
+qsort_seq average time: 27183 ms
+qsort_par average time: 8564 ms
